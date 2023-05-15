@@ -77,7 +77,9 @@
                             @endforeach
                           </tbody>
                         </table>
-                        {{$books->links()}}
+                        <div class="col-6 justify-content-end">
+                          {{$books->links()}}
+                        </div>
                     @else
                     <div class="text-centern title py-2 my2 "> No book </div>
                     @endif

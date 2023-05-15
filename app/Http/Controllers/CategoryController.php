@@ -15,9 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $c =  Category::orderBy('created_at', 'DESC')->paginate(10);
+        $categories =  Category::orderBy('created_at', 'DESC')->paginate(10);
         return view('category.index',[
-            'categories'=> $c
+            'categories'=> $categories
         ]);
     }
 
@@ -58,7 +58,13 @@ class CategoryController extends Controller
      */
     public function show($category)
     {
-        // 
+        $category = Category::find($category);
+        if($category){
+        return view('category.show',[
+            'category'=>$category
+        ]);
+        }
+        return back(404);
     }
 
 
@@ -70,7 +76,7 @@ class CategoryController extends Controller
         $category = Category::find($category);
         if($category){
             return view('category.edit',[
-                '$category'=>$category
+                'category'=>$category
             ]);
             return back(404);
         }

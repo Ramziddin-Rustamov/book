@@ -32,7 +32,7 @@
                               <th scope="col">Title</th>
                               <th scope="col">Slug</th>
                               <th scope="col">Book title</th>
-                              {{-- <th class="text-info" scope="col">view </th> --}}
+                              <th class="text-info" scope="col">view </th>
                               <th class="text-info" scope="col">Edit </th>
                               <th class="text-danger" scope="col">Dele</th>
                             </tr>
@@ -54,9 +54,9 @@
                                 <p>Not given book data !</p>
                                 @endif
                               </td>
-                                {{-- <td> --}}
-                                  {{-- <a class="text-primary" href="{{route('category.show',['category'=>$category->id])}}">view</a> --}}
-                                {{-- </td> --}}
+                                <td> 
+                                  <a class="text-primary" href="{{route('category.show',['category'=>$category->id])}}">view</a>
+                                 </td>
 
                                 <td>
                                   <a class="text-info" href="{{route('category.edit',['category'=>$category->id])}}">Edit</a>

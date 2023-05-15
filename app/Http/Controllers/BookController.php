@@ -23,6 +23,25 @@ class BookController extends Controller
         ]);
     }
 
+
+    public function readerIndex(){
+        $books = Book::orderBy('id', 'DESC')->paginate(12);
+        return view('book-home',[
+            'books'=>$books
+        ]);
+    }
+
+    
+    public function readBook($bookread){
+        $bookreader = Book::find($bookread);
+        if($bookreader){
+        return view('book-read',[
+            'bookreader'=>$bookreader
+        ]);
+        }
+        return back(404);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -58,7 +77,7 @@ class BookController extends Controller
         $imageName = $getImage->getClientOriginalName();
         $imageFullName = time().''. $imageName;
         $imageFullName = str_replace([' '],[''],$imageFullName);
-        $imagePath = $getImage->move(('images'),$imageFullName);
+        $imagePath = $getImage->move(('covers'),$imageFullName);
     }
 
     $book = new Book();
@@ -79,10 +98,18 @@ class BookController extends Controller
      * @param  \App\Models\Book  $book
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show($book)
     {
-        return view('book.show',compact('book'));
+        $book = Book::find($book);
+        if($book){
+        return view('book.show',[
+            'book'=>$book
+        ]);
+        }
+        return back(404);
     }
+
+
 
     /**
      * Show the form for editing the specified resource.
@@ -123,7 +150,7 @@ class BookController extends Controller
                 $imageName = $getImage->getClientOriginalName();
                 $imageFullName = time().''. $imageName;
                 $imageFullName = str_replace([' '],[''],$imageFullName);
-                $imagePath = $getImage->move(('images'),$imageFullName);
+                $imagePath = $getImage->move(('covers'),$imageFullName);
             }
 
             $book->title = $request->title ; 

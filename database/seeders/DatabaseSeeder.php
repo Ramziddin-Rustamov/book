@@ -27,14 +27,11 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
        $this->call([
-        BookSeeder::class,
-        CategorySeeder::class,
+           CategorySeeder::class,
+           BookSeeder::class,
+           EmployeeSeeder::class,
+           CommentSeeder::class,
+           UserSeeder::class
        ]);
-       
-        \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'Admin@domain.com',
-            'password'=>Hash::make('password')
-        ]);
     }
 }

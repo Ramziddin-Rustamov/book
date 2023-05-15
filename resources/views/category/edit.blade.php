@@ -21,23 +21,20 @@
                             </ul>
                         </div>
                     @endif
+                    @if (!is_null($category))
                     <form action="{{route('category.update',['category'=>$category->id])}}" method="POST"  enctype="multipart/form-data"> 
                         @csrf
                         @method('PUT')
-                        @if ($category)
+                       
                         <div class="mb-3">
                             <label class="form-label">Title of the category</label>
                             <input type="text" name="title" value="{{$category->title}}" class="form-control" autofocus>
                           </div>
-                          <div class="mb-3">
-                              <label class="form-label">Author of the category</label>
-                              <input type="text" name="author" value="{{$category->slug}}" class="form-control" autofocus>
-                            </div>
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        @else
-                            <div class="text-large text-danger">Book Not Fount <a href="{{route('category.index')}}">try again </a></div>
-                        @endif
                       </form>
+                      @else
+                      <div class="text-large text-danger">Book Not Fount <a href="{{route('category.index')}}">try again </a></div>
+                  @endif
                 </div>
             </div>
         </div>

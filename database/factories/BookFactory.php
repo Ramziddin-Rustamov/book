@@ -24,7 +24,7 @@ class BookFactory extends Factory
             'author'=>$this->faker->firstName(),
             'description'=>$this->faker->paragraph(),
             'rating'=>$this->faker->numberBetween(0,5),
-            'image'=>$this->faker->name()
+            'image'=>'https://via.placeholder.com/300x200'
         ];
     }
 }

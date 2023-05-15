@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             'title'=>$this->faker->name(),
-            'slug'=>$this->faker->firstName(),
+            'slug'=> str_replace(' ','-',$this->faker->name()),
         ];
     }
 }
